@@ -1,0 +1,82 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  background: #000; color: #fff; min-height: 100vh;
+  position: relative; overflow-x: hidden;
+}
+
+/* Фон із постерів */
+.posters {
+  position: fixed; inset: -25%;
+  display: grid; grid-template-columns: repeat(6, 1fr);
+  gap: 18px; padding: 20px;
+  transform: rotate(-9deg) skewX(-8deg);
+  z-index: 0;
+}
+.posters span {
+  aspect-ratio: 16 / 10; border-radius: 10px; padding: 14px;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  font: 700 clamp(14px, 1.8vw, 26px)/1.1 Georgia, serif;
+  color: rgba(255,255,255,.75); text-transform: uppercase;
+  background: linear-gradient(135deg, #5b2a86, #1b1033);
+  box-shadow: 0 6px 20px rgba(0,0,0,.6);
+}
+.posters span:nth-child(4n+2) { background: linear-gradient(135deg, #7a1c1c, #1c0a0a); }
+.posters span:nth-child(4n+3) { background: linear-gradient(135deg, #1f4a63, #0a1822); }
+.posters span:nth-child(4n)   { background: linear-gradient(135deg, #6b5a22, #1d1808); }
+.posters span:nth-child(5n)   { background: linear-gradient(135deg, #2c2c2c, #0a0a0a); }
+
+.shade {
+  position: fixed; inset: 0; z-index: 1;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,.85), rgba(0,0,0,.55) 40%, rgba(0,0,0,.85)),
+    radial-gradient(ellipse at center, rgba(0,0,0,.45), rgba(0,0,0,.85));
+}
+
+/* Шапка */
+.top {
+  position: relative; z-index: 3;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 24px max(24px, 9vw);
+}
+.brand img { height: 48px; width: auto; display: block; }
+
+/* Головний блок */
+.hero {
+  position: relative; z-index: 3;
+  max-width: 800px; margin: 0 auto;
+  padding: 7vh 24px 80px; text-align: center;
+}
+h1 {
+  font-size: clamp(2.2rem, 5.2vw, 4rem); font-weight: 900; line-height: 1.15;
+  max-width: 680px; margin: 0 auto 36px;
+}
+.price { font-size: clamp(1.05rem, 1.6vw, 1.35rem); margin-bottom: 28px; }
+.lead { font-size: clamp(.95rem, 1.2vw, 1.05rem); max-width: 720px; margin: 0 auto 18px; }
+
+.signup { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.start {
+  height: 70px; padding: 0 30px; background: #e50914; color: #fff; text-decoration: none;
+  border-radius: 4px; font-size: 1.7rem;
+  display: inline-flex; align-items: center; gap: 14px;
+}
+.start:hover { background: #c40812; }
+.start:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.chev {
+  width: 14px; height: 14px; border-top: 3px solid #fff; border-right: 3px solid #fff;
+  transform: rotate(45deg); margin-left: -4px;
+}
+
+/* Червона дуга внизу */
+.arc {
+  position: fixed; left: -10%; right: -10%; bottom: -60px; height: 80px; z-index: 2;
+  border-top: 3px solid #e5265a; border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  box-shadow: 0 -8px 40px rgba(229,38,90,.55);
+}
+
+@media (max-width: 600px) {
+  .top { padding: 16px; }
+  .brand img { height: 36px; }
+  .posters { grid-template-columns: repeat(3, 1fr); }
+  }
